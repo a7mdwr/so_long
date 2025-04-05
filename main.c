@@ -15,8 +15,8 @@ void	free_2d(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
-		free(str[i++]);
+    while (str[i])
+	    free(str[i++]);
 	free(str);
 }
 
@@ -53,7 +53,7 @@ int main(int ac , char **av)
     lines_num = count_lines(fd);
     close(fd);
     printf("%d\n", lines_num);
-    s.array = malloc(sizeof(char *) * lines_num + 1);
+    s.array = malloc(sizeof(char *) * (lines_num + 1));
     if (!s.array)
         return (write(2, "Error: allocation failed\n", 26), close(fd), 1);
     fd = open(av[1], O_RDONLY);
