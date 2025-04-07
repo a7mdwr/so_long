@@ -52,7 +52,6 @@ int main(int ac , char **av)
         return (write(2, "Error\n", 7), 0);
     lines_num = count_lines(fd);
     close(fd);
-    printf("%d\n", lines_num);
     s.array = malloc(sizeof(char *) * (lines_num + 1));
     if (!s.array)
         return (write(2, "Error: allocation failed\n", 26), close(fd), 1);
@@ -70,7 +69,6 @@ int main(int ac , char **av)
         free_2d(s.array);
         return (write(2, "Error : not reqtiangle or invalid char\n ", 41), 0);
     }
-        
     free_2d(s.array);
     close(fd);
 }

@@ -4,7 +4,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Werror -Wextra -g 
 CC = cc
 
-SRCS = main.c utils.c
+SRCS = main.c utils.c utils2.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME) $(LIBFT)
@@ -21,6 +21,6 @@ clean:
 
 fclean:
 	cd $(LIBFT_DIR) && make fclean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OBJS)
 
 re: fclean all

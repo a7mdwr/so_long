@@ -26,16 +26,12 @@ static int helper_function(char **str)
         {
             while(str[j][i])
             {
-                if(str[j][i] != '1'){
-                    
-                printf("{%c}\n", str[j][i]);
-            return 0;
-        }
+                if(str[j][i] != '1')
+                    return 0;
                 i++;
             }
             first = 0;
         }
-        printf("here");
         i = ft_strlen(str[j]) - 1;
         if (str[j][i] != '1')
             return 0;
@@ -83,5 +79,31 @@ int same_rows(t_long *s)
     }
     if(!helper_function(s->array))
         return 0;
+    return 1;
+}
+
+int count_chars(t_long *s)
+{
+    int i;
+    int j;
+
+    j = 0;
+    while(s->array[j])
+    {   
+        i = 0;
+        while(s->array[j][i])
+        {
+            if (s->array[j][i] == 'C')
+                s->C++;
+            else if (s->array[j][i] == 'P')
+                s->P++;
+            else if (s->array[j][i] == 'E')
+                s->E++;
+            i++;
+        }
+        j++;
+    }
+    if (!s->C || s->E > 1 || s->P > 1)
+        return (0);
     return 1;
 }

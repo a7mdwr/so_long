@@ -15,10 +15,15 @@
 typedef struct s_long
 {
     char **array;
+    char **map_dup;
+    int C;
+    int P;
+    int E;
     int x;
     int y;
 }   t_long;
 
 int same_rows(t_long *s);
+char **copy_map(t_long *s);
 
 #endif
