@@ -50,6 +50,32 @@ static int helper_function(char **str)
     return 1;
 }
 
+int count_chars(t_long *s)
+{
+    int i;
+    int j;
+
+    j = 0;
+    while(s->array[j])
+    {   
+        i = 0;
+        while(s->array[j][i])
+        {
+            if (s->array[j][i] == 'C')
+                s->C++;
+            else if (s->array[j][i] == 'P')
+                s->P++;
+            else if (s->array[j][i] == 'E')
+                s->E++;
+            i++;
+        }
+        j++;
+    }
+    if (!s->C || s->E > 1 || s->P > 1)
+        return (0);
+    return 1;
+}
+
 int same_rows(t_long *s)
 {
     size_t i;
@@ -79,31 +105,7 @@ int same_rows(t_long *s)
     }
     if(!helper_function(s->array))
         return 0;
-    return 1;
-}
-
-int count_chars(t_long *s)
-{
-    int i;
-    int j;
-
-    j = 0;
-    while(s->array[j])
-    {   
-        i = 0;
-        while(s->array[j][i])
-        {
-            if (s->array[j][i] == 'C')
-                s->C++;
-            else if (s->array[j][i] == 'P')
-                s->P++;
-            else if (s->array[j][i] == 'E')
-                s->E++;
-            i++;
-        }
-        j++;
-    }
-    if (!s->C || s->E > 1 || s->P > 1)
-        return (0);
+    if(!count_chars(s))
+        return 0;
     return 1;
 }

@@ -25,5 +25,7 @@ typedef struct s_long
 
 int same_rows(t_long *s);
 char **copy_map(t_long *s);
+int cheak_paths(t_long *s);
+void paths(int x, int y, char **map, t_long *s);
 
 #endif
