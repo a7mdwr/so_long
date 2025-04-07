@@ -4,7 +4,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Werror -Wextra -g 
 CC = cc
 
-SRCS = main.c
+SRCS = main.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME) $(LIBFT)

@@ -61,10 +61,16 @@ int main(int ac , char **av)
     {
         s.array[i] = ft_strtrim(line, "\n");
         i++;
-        printf("%s", line);
+        // printf("%s", line); 
         free(line);
     }
     s.array[i] = NULL;
+    if (!same_rows(&s))
+    {
+        free_2d(s.array);
+        return (write(2, "Error : not reqtiangle or invalid char\n ", 41), 0);
+    }
+        
     free_2d(s.array);
     close(fd);
 }

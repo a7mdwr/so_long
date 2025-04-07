@@ -15,6 +15,10 @@
 typedef struct s_long
 {
     char **array;
+    int x;
+    int y;
 }   t_long;
+
+int same_rows(t_long *s);
 
 #endif
