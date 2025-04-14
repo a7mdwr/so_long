@@ -50,22 +50,26 @@ static int helper_function(char **str)
     return 1;
 }
 
-int count_chars(t_long *s)
+int count_chars(t_game *s)
 {
     int i;
     int j;
 
     j = 0;
-    while(s->array[j])
+    while(s->map[j])
     {   
         i = 0;
-        while(s->array[j][i])
+        while(s->map[j][i])
         {
-            if (s->array[j][i] == 'C')
+            if (s->map[j][i] == 'C')
                 s->C++;
-            else if (s->array[j][i] == 'P')
+            else if (s->map[j][i] == 'P')
+            {
+                s->p_x = j;
+                s->p_y = i;
                 s->P++;
-            else if (s->array[j][i] == 'E')
+            }
+            else if (s->map[j][i] == 'E')
                 s->E++;
             i++;
         }
@@ -76,34 +80,35 @@ int count_chars(t_long *s)
     return 1;
 }
 
-int same_rows(t_long *s)
+int same_rows(t_game *s)
 {
     size_t i;
     int j;
 
     i = 0;
     j = 1;
-    while (s->array[j])
+    while (s->map[j])
     {
         i = 0;
-        while(s->array[j][i])
+        while(s->map[j][i])
         {
-            if (!char_cheak(s->array[j][i]))
+            if (!char_cheak(s->map[j][i]))
                 return (0);
             i++;
         }
         j++;
     }
     j = 0;
-    while (s->array[j] && s->array[j + 1])
+    s->map_width = ft_strlen(s->map[j]);
+    while (s->map[j] && s->map[j + 1])
     {
         i = 0;
-        i = ft_strlen(s->array[j]);
-        if (i != ft_strlen(s->array[j + 1]))
+        i = ft_strlen(s->map[j]);
+        if (i != ft_strlen(s->map[j + 1]))
             return (0);
         j++;
     }
-    if(!helper_function(s->array))
+    if(!helper_function(s->map))
         return 0;
     if(!count_chars(s))
         return 0;

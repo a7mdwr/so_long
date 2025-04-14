@@ -9,23 +9,28 @@
 #include <limits.h>
 #include <unistd.h>
 
-#define OPEN_MAX 1024
 
 
-typedef struct s_long
+typedef struct s_game
 {
-    char **array;
+    char **map;
     char **map_dup;
     int C;
     int P;
+    int p_x;
+    int p_y;
     int E;
     int x;
     int y;
-}   t_long;
+    int map_width;
+    int map_height;
+}   t_game;
 
-int same_rows(t_long *s);
-char **copy_map(t_long *s);
-int cheak_paths(t_long *s);
-void paths(int x, int y, char **map, t_long *s);
+int same_rows(t_game *s);
+void print_map(char **map);
+char **copy_map(t_game *s);
+int cheak_paths(t_game *s);
+void paths(int x, int y, char **map, t_game *s);
+void	free_2d(char **str);
 
 #endif

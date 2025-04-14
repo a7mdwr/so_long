@@ -1,6 +1,16 @@
 #include "so_long.h"
 
-char **copy_map(t_long *s)
+void	free_map(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
+char **copy_map(t_game *s)
 {
     int size;
     int j;
@@ -9,14 +19,14 @@ char **copy_map(t_long *s)
     j = 0;
     size = 0;
     i = 0;
-    while (s->array[size])
+    while (s->map[size])
         size++;
     s->map_dup = malloc(sizeof(char *) * (size + 1));
     if (!s->map_dup)
         return NULL;
-    while(s->array[j])
+    while(s->map[j])
     {
-        s->map_dup[i] = ft_strdup(s->array[j]);
+        s->map_dup[i] = ft_strdup(s->map[j]);
         j++;
         i++;
     }
@@ -25,13 +35,14 @@ char **copy_map(t_long *s)
 }
 
 
-void paths(int x, int y, char **map, t_long *s)
+void paths(int x, int y, char **map, t_game *s)
 {
+    printf("%d\n %d\n", s->y , s->x);
     if(map[x][y] == '1' || map[x][y] == 'X')
         return ;
     if (map[x][y] == 'C')
         s->C--;
-    else if (map[x][y] == 'E')
+    if (map[x][y] == 'E')
         s->E--;
     map[x][y] = 'X';
     paths(x + 1, y , map, s);
@@ -40,10 +51,24 @@ void paths(int x, int y, char **map, t_long *s)
     paths(x, y -1 , map, s);
 }
 
-int cheak_paths(t_long *s)
+int cheak_paths(t_game *s)
 {
-    paths(s->x, s->y, s->map_dup, s);
-    if (s->P > 0 || s->E > 0 || s->C > 0)
-        return 0;
-    return 1;
+	int		valid_collect;
+	int		valid_exit;
+	int		row;
+
+	row = -1;
+	valid_collect = s->C;
+	valid_exit = s->E;
+    copy_map(s);
+	paths(s->p_x, s->p_y,s->map_dup, s);
+    print_map(s->map_dup);
+    free_map(s->map_dup);
+    print_map(s->map_dup);
+	if (s->C > 0 || s->E > 0)
+		return (0);
+	s->C = valid_collect;
+	s->E = valid_exit;
+	return (1);
 }
+

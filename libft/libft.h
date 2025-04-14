@@ -19,7 +19,6 @@
 # include <limits.h>
 # include <stdint.h>
 
-#define OPEN_MAX 1024
 #define BUFFER_SIZE 1
 
 # define TAB '\t'
