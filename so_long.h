@@ -9,7 +9,7 @@
 #include <limits.h>
 #include <unistd.h>
 
-
+#define OPEN_MAX 1024
 
 typedef struct s_game
 {
