@@ -13,16 +13,16 @@ static int helper_function(char **str)
 {
     int j;
     int i;
-    int first;
+    int first_row;
 
-    first = 1;
+    first_row = 1;
     j = 0;
     while (str[j])  
     {
         i = 0;
         if (str[j][0] != '1')
             return 0;
-        if (first)
+        if (first_row)
         {
             while(str[j][i])
             {
@@ -30,7 +30,7 @@ static int helper_function(char **str)
                     return 0;
                 i++;
             }
-            first = 0;
+            first_row = 0;
         }
         i = ft_strlen(str[j]) - 1;
         if (str[j][i] != '1')

@@ -8,7 +8,6 @@ void	free_map(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
-    *str = NULL;
 }
 
 char **copy_map(t_game *s)
@@ -63,9 +62,7 @@ int cheak_paths(t_game *s)
 	valid_exit = s->E;
     copy_map(s);
 	paths(s->p_x, s->p_y,s->map_dup, s);
-    print_map(s->map_dup);
     free_map(s->map_dup);
-    print_map(s->map_dup);
 	if (s->C > 0 || s->E > 0)
 		return (0);
 	s->C = valid_collect;

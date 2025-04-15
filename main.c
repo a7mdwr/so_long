@@ -48,28 +48,6 @@
     return count;
  }
  
-
- void print_map(char **map)
- {
-     int i = 0;
- 
-     if (!map)
-     {
-         printf("Map is NULL\n");
-         return;
-     }
-
-     printf("===== Duplicated Map =====\n");
-     while (map[i])
-     {
-
-         printf("%s\n", map[i]);
-         i++;
-     }
-     printf("===========================\n");
- }
- 
-
  int main(int ac , char **av)
  {
      char *line;

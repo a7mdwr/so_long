@@ -6,14 +6,14 @@ CC = cc
 
 SRCS = main.c utils.c utils2.c
 OBJS = $(SRCS:.c=.o)
-
+MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 all: $(NAME) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) $(MLX) -lft -o $(NAME)
 
 clean:
 	cd $(LIBFT_DIR) && make clean
