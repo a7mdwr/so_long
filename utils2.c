@@ -55,9 +55,7 @@ int cheak_paths(t_game *s)
 {
 	int		valid_collect;
 	int		valid_exit;
-	int		row;
 
-	row = -1;
 	valid_collect = s->C;
 	valid_exit = s->E;
     copy_map(s);
