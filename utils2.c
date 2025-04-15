@@ -8,6 +8,7 @@ void	free_map(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
+    *str = NULL;
 }
 
 char **copy_map(t_game *s)

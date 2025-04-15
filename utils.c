@@ -75,7 +75,7 @@ int count_chars(t_game *s)
         }
         j++;
     }
-    if (!s->C || s->E > 1 || s->P > 1)
+    if (!s->C || s->E != 1 || s->P > 1)
         return (0);
     return 1;
 }

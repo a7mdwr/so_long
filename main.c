@@ -62,11 +62,7 @@
      printf("===== Duplicated Map =====\n");
      while (map[i])
      {
-         if (!map[i])
-         {
-             printf("Null line at index %d\n", i);
-             break;
-         }
+
          printf("%s\n", map[i]);
          i++;
      }
