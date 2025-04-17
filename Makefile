@@ -4,7 +4,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Werror -Wextra -g 
 CC = cc
 
-SRCS = main.c utils.c utils2.c
+SRCS = main.c utils.c utils2.c parc.c
 OBJS = $(SRCS:.c=.o)
 MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 all: $(NAME) $(LIBFT)

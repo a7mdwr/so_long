@@ -26,8 +26,6 @@
 # define CARRIAGE '\r'
 # define SPACE ' '
 
-#define OPEN_MAX 1024
-
 
 typedef struct s_split
 {

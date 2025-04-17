@@ -9,7 +9,7 @@
 #include <limits.h>
 #include <unistd.h>
 
-#define OPEN_MAX 1024
+#define TILE_SIZE 64
 
 typedef struct s_game
 {
@@ -32,5 +32,8 @@ char **copy_map(t_game *s);
 int cheak_paths(t_game *s);
 void paths(int x, int y, char **map, t_game *s);
 void	free_2d(char **str);
-
+int cheak_ber(char *file);
+int check(int ac, char **av);
+int read_map(char **av ,t_game *s);
+int count_lines(int fd, t_game *s);
 #endif
