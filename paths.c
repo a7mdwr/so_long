@@ -37,7 +37,6 @@ char **copy_map(t_game *s)
 
 void paths(int x, int y, char **map, t_game *s)
 {
-    printf("%d\n %d\n", s->y , s->x);
     if(map[x][y] == '1' || map[x][y] == 'X')
         return ;
     if (map[x][y] == 'C')
@@ -51,6 +50,26 @@ void paths(int x, int y, char **map, t_game *s)
     paths(x, y -1 , map, s);
 }
 
+void print_map(char **map)
+{
+    int i = 0;
+
+    if (!map)
+    {
+        printf("Map is NULL\n");
+        return;
+    }
+
+    printf("===== Duplicated Map =====\n");
+    while (map[i])
+    {
+
+        printf("%s\n", map[i]);
+        i++;
+    }
+    printf("===========================\n");
+}
+
 int cheak_paths(t_game *s)
 {
 	int		valid_collect;
@@ -62,7 +81,7 @@ int cheak_paths(t_game *s)
 	paths(s->p_x, s->p_y,s->map_dup, s);
     free_map(s->map_dup);
 	if (s->C > 0 || s->E > 0)
-		return (0);
+        return (0);
 	s->C = valid_collect;
 	s->E = valid_exit;
 	return (1);

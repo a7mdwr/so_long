@@ -75,7 +75,7 @@ int count_chars(t_game *s)
         }
         j++;
     }
-    if (!s->C || s->E != 1 || s->P > 1)
+    if (s->C <= 0|| s->E != 1 || s->P != 1)
         return (0);
     return 1;
 }
@@ -111,6 +111,6 @@ int same_rows(t_game *s)
     if(!helper_function(s->map))
         return 0;
     if(!count_chars(s))
-        return 0;
+        return (write(2, "Error\nMap must have 1P, 1E, 1+C\n", 33), 1);
     return 1;
 }

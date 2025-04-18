@@ -1,10 +1,10 @@
 NAME = so_long
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-CFLAGS = -Wall -Werror -Wextra -g 
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 CC = cc
 
-SRCS = main.c utils.c utils2.c parc.c
+SRCS = main.c utils.c paths.c parc.c
 OBJS = $(SRCS:.c=.o)
 MLX = -L./mlx -lmlx -framework OpenGL -framework AppKit
 all: $(NAME) $(LIBFT)

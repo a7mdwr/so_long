@@ -12,9 +12,8 @@
  
  int main(int ac , char **av)
  {
-     t_game s;
-     ft_bzero(&s, sizeof(s));
+    //  t_game s;
+
      if (!check(ac, av))
-         return (write(2, "Error\nnot .ber file\n", 21), 0);
-     free_2d(s.map);
+         return (0);
  }

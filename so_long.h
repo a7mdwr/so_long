@@ -36,4 +36,5 @@ int cheak_ber(char *file);
 int check(int ac, char **av);
 int read_map(char **av ,t_game *s);
 int count_lines(int fd, t_game *s);
+void	free_map(char **str);
 #endif

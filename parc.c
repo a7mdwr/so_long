@@ -6,7 +6,7 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:45:31 by aradwan           #+#    #+#             */
-/*   Updated: 2025/04/17 16:25:24 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/18 14:34:21 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,15 @@ int check(int ac, char **av)
 {
     t_game s;
     
+    ft_bzero(&s, sizeof(s));
     if (ac != 2)
          return (write(2, "Error\nless than 2 ac", 21), 0);
-    if (!cheak_ber(av[1]))
+    else if (!cheak_ber(av[1]))
         return (write(2, "Error\nnot .ber file\n", 21), 0);
     read_map(av, &s);
     if (!same_rows(&s))
     {
-        free_2d(s.map);
+        free_map(s.map);
         return (write(2, "Error\nnot reqtiangle or invalid char\n", 38), 0);
     }
     if (!cheak_paths(&s))
