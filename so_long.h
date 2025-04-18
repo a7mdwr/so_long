@@ -22,7 +22,6 @@ typedef struct s_game
     int E;
     int x;
     int y;
-    int map_width;
     int map_height;
 }   t_game;
 
