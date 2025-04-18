@@ -6,33 +6,11 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 15:07:17 by aradwan           #+#    #+#             */
-/*   Updated: 2025/04/18 16:06:15 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/18 18:53:08 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	char_cheak(char c)
-{
-	if (c == '1' || c == '0' || c == 'C' || c == 'P' || c == 'E')
-		return (1);
-	else
-		return (0);
-}
-
-static int	is_wall_line(char *row)
-{
-	int i;
-	
-	i = 0;
-	while (row[i])
-	{
-		if (row[i] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 static int	helper_function(char **str)
 {
@@ -51,37 +29,42 @@ static int	helper_function(char **str)
 	}
 	if (!is_wall_line(str[j - 1]))
 		return (0);
-    return (1);
+	return (1);
 }
 
-int count_chars(t_game *s)
+static void	scan_map(t_game *s, int i, int j)
 {
-    int i;
-    int j;
+	if (s->map[j][i] == 'C')
+		s->C++;
+	else if (s->map[j][i] == 'P')
+	{
+		s->p_x = j;
+		s->p_y = i;
+		s->P++;
+	}
+	else if (s->map[j][i] == 'E')
+		s->E++;
+}
 
-    j = 0;
-    while(s->map[j])
-    {   
-        i = 0;
-        while(s->map[j][i])
-        {
-            if (s->map[j][i] == 'C')
-                s->C++;
-            else if (s->map[j][i] == 'P')
-            {
-                s->p_x = j;
-                s->p_y = i;
-                s->P++;
-            }
-            else if (s->map[j][i] == 'E')
-                s->E++;
-            i++;
-        }
-        j++;
-    }
-    if (s->C <= 0|| s->E != 1 || s->P != 1)
-        return (0);
-    return 1;
+int	count_chars(t_game *s)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (s->map[j])
+	{
+		i = 0;
+		while (s->map[j][i])
+		{
+			scan_map(s, i, j);
+			i++;
+		}
+		j++;
+	}
+	if (s->C <= 0 || s->E != 1 || s->P != 1)
+		return (0);
+	return (1);
 }
 
 static int	check_valid_chars(char **map)
