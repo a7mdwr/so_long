@@ -6,7 +6,7 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:45:31 by aradwan           #+#    #+#             */
-/*   Updated: 2025/04/18 18:53:20 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:07:21 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	count_lines(int fd, t_game *s)
 
 int	read_map(char **av, t_game *s)
 {
-	int		lines_num;
 	int		i;
 	int		fd;
 	char	*line;
@@ -59,12 +58,13 @@ int	read_map(char **av, t_game *s)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (write(2, "Error\n", 7), 0);
-	lines_num = count_lines(fd, s);
+	s->lines_num = count_lines(fd, s);
 	close(fd);
-	s->map = malloc(sizeof(char *) * (lines_num + 1));
+	s->map = malloc(sizeof(char *) * (s->lines_num + 1));
 	if (!s->map)
 		return (write(2, "Error\nallocation failed\n", 25), close(fd), 0);
 	fd = open(av[1], O_RDONLY);
+	line = get_next_line(fd);
 	while (line)
 	{
 		s->map[i] = ft_strtrim(line, "\n");

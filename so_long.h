@@ -6,7 +6,7 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:54:20 by aradwan           #+#    #+#             */
-/*   Updated: 2025/04/18 18:54:24 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/18 19:03:55 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_game
 	int		x;
 	int		y;
 	int		map_height;
+	int		lines_num;
 }	t_game;
 
 int		same_rows(t_game *s);
