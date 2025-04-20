@@ -6,7 +6,7 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 15:07:17 by aradwan           #+#    #+#             */
-/*   Updated: 2025/04/18 18:53:08 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/20 14:04:41 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static int	helper_function(char **str)
 static void	scan_map(t_game *s, int i, int j)
 {
 	if (s->map[j][i] == 'C')
-		s->C++;
+		s->c++;
 	else if (s->map[j][i] == 'P')
 	{
 		s->p_x = j;
 		s->p_y = i;
-		s->P++;
+		s->p++;
 	}
 	else if (s->map[j][i] == 'E')
-		s->E++;
+		s->e++;
 }
 
 int	count_chars(t_game *s)
@@ -62,7 +62,7 @@ int	count_chars(t_game *s)
 		}
 		j++;
 	}
-	if (s->C <= 0 || s->E != 1 || s->P != 1)
+	if (s->c <= 0 || s->e != 1 || s->p != 1)
 		return (0);
 	return (1);
 }
@@ -101,6 +101,6 @@ int	same_rows(t_game *s)
 		j++;
 	}
 	if (!helper_function(s->map) || !count_chars(s))
-		return (write(2, "Error\nMap must have 1P, 1E, 1+C\n", 33), 1);
+		return (write(2, "error\nMap must have 1P, 1e, 1+C\n", 33), 1);
 	return (1);
 }

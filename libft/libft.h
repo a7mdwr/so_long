@@ -6,7 +6,7 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 09:59:09 by aradwan           #+#    #+#             */
-/*   Updated: 2024/12/17 09:59:09 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/04/20 15:48:54 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@
 # include <limits.h>
 # include <stdint.h>
 
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
 
 # define TAB '\t'
 # define BACKSPACE '\b'
 # define CARRIAGE '\r'
 # define SPACE ' '
-
 
 typedef struct s_split
 {
